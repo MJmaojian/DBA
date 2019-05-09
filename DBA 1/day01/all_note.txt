@@ -1,0 +1,185 @@
+ftp://172.40.50.117/2018/soft/
+vnc  172.40.50.117  7000
+
+认真听讲  专心做练习  不迟到不早退
+
+panglj@tedu.cn
+
+庞丽静  静静
+
+第一阶段
+第二阶段
+
+第三阶段 
+
+数据库管理 15     数据库管理员  DBA
+
+安全与监控  6     IDC监控  
++++++++++++++++++++++++++++++++++++++++++
+数据库管理 15
+DBA1   5
+DBA2   5
+NoSQL  5
+
+
+DBA1_DAY01
+一、搭建数据库服	
+1.1 相关概念
+
+数据包括那些？ 图片 视频  音频  文字 数字
+什么是数据呢？
+为什么要架设数据库服务器呢？
+
+网站： 购物  游戏  论坛
+数据库里  LNMP  LAMP  PHP
+
+数据库服务软件有那些？
+Oracle    SQL SERVER  MySQL  DB2    memcached  Redis MogoDB  
+	RDBMS				     NoSQL
+
+    软件包从那来？ 官网  系统安装光盘rhel7.4  2015
+
+     开源软件 商业软件 跨平台 LINUX unix  windows
+ 
+     使用那种软件搭建数据库服务器好呢？ mysql
+
+					php python java
+
+1.2 环境准备: 10分钟  到 09：55
+
+192.168.4.50  mysql-5.7.17.tar
+     yum源 禁用 selinux  和 firewalld
+
+
+1.3 装包  修改配置文件 启动服务
+
+
+]# tar -xvf mysql-5.7.17.tar
+]# yum -y  install  mysql-community-*.rpm
+
+
+
+
+
+vim /etc/my.cnf
+[mysqld]
+validate_password_length=6
+validate_password_policy=0
+:wq
+
+
+  
+
+1.4  数据库基本管理
+
+
+14：12  西安中心掉线了 等10分钟 
+
+            预习一下ppt上的命令 
+
+]# mysql  -hlocalhost  -uroot  -ptarena 连接数据库服务器
+mysql> select user(); 显示登陆的用户
+mysql> select database(); 显示当前所在的库
+mysql> create database  db1; 创建新库db1
+mysql> show databases; 查看已有的库
+mysql> create table db1.stuinfo(name char(10) , homeadd  char(20) ); 创建新表stuinfo
+mysql> use db1; 进入到db1库里
+mysql> show tables; 显示已有的表
+mysql> insert into db1.stuinfo values ("bob","usa"),("lilei","china"); 插入2条表记录
+mysql> select  * from  db1.stuinfo; 查看所有表记录
+mysql> update db1.stuinfo set homeadd="beijing"; 批量修改homeadd字段的值
+mysql> delete from  db1.stuinfo; 删除所有表记录
+mysql> select  * from  db1.stuinfo; 查看表记录因为删除了所以没有记录了
+mysql> show tables; 查看表
+
+mysql> drop table db1.stuinfo; 删除表
+mysql> drop database db1; 删除库
+休息10分钟 到 15：15 
+mysql> create database db1;
+mysql> create table db1.a(name char(10));
+mysql> create table db1.学生信息表(
+姓名 char(10) , 
+家庭地址  char(20) 
+)DEFAULT CHARSET=utf8;
+
+mysql> insert into db1.学生信息表 
+values ("张三丰","武当山"),("张无忌","光明顶"),("谢逊","冰火岛");
+练习10分钟 到 16：00  休息10分钟 
+
+二、MYSQL数据类型  16：10  上课
+2.1 数值类型
+create table  db1.t1(
+id  int,
+name char(5),
+age tinyint unsigned 
+);
+insert into db1.t1  values (9999,"bob",256);
+insert into db1.t1  values (9999,"bob",209);
+insert into db1.t1  values (-9999,"tom",209);
+insert into db1.t1  values (1.25,"jerry",20.88);
+create table  db1.t2(
+name char(5),
+pay  float,
+money float(5,2)
+);
+整数.小数 总位数
+	   xxx.xx
+           999.99
+	   -999.99
+insert into  db1.t2 values ("bob",1.23,1000.23);
+insert into  db1.t2 values ("bob",1.23,900.23);
+insert into  db1.t2 values ("bob",19,999);
+
+休息 到  17：10 分钟 
+
+
+2.2 字符类型
+
+create table  db1.t3(
+name char(5),
+mail varchar(10),
+homeaddr  varchar(50)
+);
+
+mysql> insert into db1.t3 values ("admina","plj@tedu.cn","tiantan");
+
+mysql> insert into db1.t3 values ("admin","plj@163.cn","tiantan");
+
+
+2.3 日期时间类型
+年  日期  时间 日期时间
+
+create  table  db1.t4(
+name char(10),
+your_start  year,
+up_time  time,
+birthday  date,
+party  datetime
+);
+
+insert into  db1.t4 values ("bob",1990,083000,20191120,20190618093000);
+
+select  * from  db1.t4;
+
+
+2.4 枚举类型
+enum 单选
+set  多选
+
+create table db1.t5 (
+name char(5),
+likes set("eat","game","film","music"),
+sex   enum("boy","girl","no")
+);
+
+mysql> insert into db1.t5 values ("bob","eat,film,game","boy");
+mysql> select  * from  db1.t5;
+
+数据类型 ： 数值类型  字符类型  日期时间类型 枚举类型
+
+
+创建  前任信息表
+
+50  51  52  53 54  55  56 
+
+19：00  丁明一老师讲第二阶段总结 
